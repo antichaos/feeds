@@ -1,0 +1,40 @@
+{
+  "feeds": [
+    {
+      "slug": "nos-algemeen",
+      "url": "https://feeds.nos.nl/nosnieuwsalgemeen",
+      "name": "NOS Nieuws – Algemeen",
+      "category": "Dutch news"
+    },
+    {
+      "slug": "bbc-world",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "name": "BBC News – World",
+      "category": "International news"
+    },
+    {
+      "slug": "tableau-blog",
+      "url": "https://www.tableau.com/blog/feed",
+      "name": "Tableau blog (official)",
+      "category": "Tableau — official & product"
+    },
+    {
+      "slug": "aws-whats-new",
+      "url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
+      "name": "AWS What's New",
+      "category": "Cloud & data platforms"
+    },
+    {
+      "slug": "usgs-quakes-day",
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom",
+      "name": "USGS earthquakes – past 24 h (all)",
+      "category": "Science, space & earth (mappable)"
+    },
+    {
+      "slug": "gdacs",
+      "url": "https://www.gdacs.org/xml/rss.xml",
+      "name": "GDACS – global disaster alerts",
+      "category": "Science, space & earth (mappable)"
+    }
+  ]
+}
