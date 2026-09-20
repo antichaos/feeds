@@ -1,0 +1,64 @@
+# Fetch the feeds in feeds.json every hour with rss2json.py and publish the
+# JSON to GitHub Pages, so the Tableau REST API Connector can read it from
+#   https://<user>.github.io/<repo>/all.json
+#
+# On GitHub this file must live at  .github/workflows/rss.yml  (see README, step B3).
+# Needs: Settings → Pages → Build and deployment → Source = "GitHub Actions".
+name: RSS to JSON on GitHub Pages
+
+on:
+  schedule:
+    - cron: "17 * * * *"      # hourly, at :17 (GitHub may run it a few minutes late)
+  workflow_dispatch:          # "Run workflow" button in the Actions tab
+  push:
+    branches: [main]          # republish when feeds.json changes
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch feeds
+        run: python3 rss2json.py -f feeds.json -o out --csv
+
+      - name: Write a small index.html listing the files
+        run: |
+          cd out
+          {
+            echo '<!doctype html><meta charset="utf-8"><title>RSS as JSON</title>'
+            echo '<h1>RSS as JSON for Tableau</h1>'
+            echo '<p>Tableau REST API Connector: Response Format <b>JSON</b>, JSON Path <code>$.items[*]</code></p><ul>'
+            for f in all.json all.csv *.json; do
+              [ "$f" = all.json ] && [ -n "$seen" ] && continue; seen=1
+              echo "<li><a href=\"$f\">$f</a> ($(du -h "$f" | cut -f1))</li>"
+            done
+            echo "</ul><p>Generated $(date -u '+%Y-%m-%d %H:%M UTC')</p>"
+          } > index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
