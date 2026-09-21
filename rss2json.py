@@ -2,22 +2,20 @@
 """
 rss2json.py — fetch RSS/Atom feeds and write them as JSON for Tableau.
 
-Standalone: Python 3.8+, standard library only, no AWS, nothing to install.
-Produces the same JSON shape as the Lambda in src/handler.py, so the Tableau
-REST API Connector settings are identical (Response Format: JSON,
-JSON Path: $.items[*]).
+Standalone: Python 3.8+, standard library only. The output is read by the
+Tableau REST API Connector (Response Format: JSON, JSON Path: $.items[*]).
 
 Usage
+    python3 rss2json.py                              # no arguments: uses feeds.json next to the script
+    python3 rss2json.py -f feeds.json -o out --csv   # what the GitHub job runs (see rss.yml)
     python3 rss2json.py https://feeds.nos.nl/nosnieuwsalgemeen
     python3 rss2json.py -o out nos=https://feeds.nos.nl/nosnieuwsalgemeen tech=https://feeds.nos.nl/nosnieuwstech
-    python3 rss2json.py -f src/feeds.json            # reuse the project's feed list
-    python3 rss2json.py                              # no arguments: uses feeds.json next to the script, if any
     python3 rss2json.py -f feeds-catalog.json -c tableau          # one category from the catalog
     python3 rss2json.py -f feeds-catalog.json --only nos-algemeen,bbc-top
 
 Writes <out>/<slug>.json per feed and <out>/all.json with everything combined
-(--csv adds <out>/all.csv, the same rows as a flat table).
-Copy those files to any web server (see README: "Quick test without AWS").
+(--csv adds <out>/all.csv, the same rows as a flat table). See README.md for
+how to publish them with GitHub Pages.
 """
 import argparse
 import csv
