@@ -7,7 +7,7 @@ Tableau REST API Connector (Response Format: JSON, JSON Path: $.items[*]).
 
 Usage
     python3 rss2json.py                              # no arguments: uses feeds.json next to the script
-    python3 rss2json.py -f feeds.json -o out --csv   # what the GitHub job runs (see rss.yml)
+    python3 rss2json.py -f feeds.json                # what the GitHub job runs (see rss.yml)
     python3 rss2json.py https://feeds.nos.nl/nosnieuwsalgemeen
     python3 rss2json.py -o out nos=https://feeds.nos.nl/nosnieuwsalgemeen tech=https://feeds.nos.nl/nosnieuwstech
     python3 rss2json.py -f feeds-catalog.json -c tableau          # one category from the catalog
