@@ -25,16 +25,92 @@
       "category": "Cloud & data platforms"
     },
     {
-      "slug": "usgs-quakes-day",
-      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom",
-      "name": "USGS earthquakes – past 24 h (all)",
-      "category": "Science, space & earth (mappable)"
-    },
-    {
       "slug": "gdacs",
       "url": "https://www.gdacs.org/xml/rss.xml",
       "name": "GDACS – global disaster alerts",
       "category": "Science, space & earth (mappable)"
+    },
+    {
+      "slug": "antichaos",
+      "url": "https://antichaosdata.com/feed",
+      "name": "Antichaos Blog",
+      "category": "Science, space & earth (mappable)"
+    },
+    {
+      "slug": "nyt-home",
+      "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+      "name": "New York Times \u2013 Home",
+      "category": "International news"
+    },
+    {
+      "slug": "aljazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "name": "Al Jazeera",
+      "category": "International news"
+    },
+    {
+      "slug": "our-world-in-data",
+      "url": "https://ourworldindata.org/atom.xml",
+      "name": "Our World in Data",
+      "category": "Data, statistics & open data",
+      "images": "all",
+      "notes": "CC BY. Atom."
+    },
+    {
+      "slug": "nightingale-dvs",
+      "url": "https://nightingaledvs.com/feed/",
+      "name": "Nightingale (Data Visualization Society)",
+      "category": "Data, statistics & open data",
+      "images": "most",
+      "notes": ""
+    },
+    {
+      "slug": "tableau-conference-yt",
+      "url": "https://www.youtube.com/feeds/videos.xml?user=tableausoftware",
+      "name": "Tableau on YouTube",
+      "category": "Tableau \u2014 official & product",
+      "images": "all",
+      "notes": "YouTube Atom feed; thumbnails via media:group. Any channel works with ?channel_id=\u2026 (find the id in the channel page source)."
+    },
+    {
+      "slug": "tableau-mcp-releases",
+      "url": "https://github.com/tableau/tableau-mcp/releases.atom",
+      "name": "tableau-mcp releases",
+      "category": "Tableau \u2014 official & product",
+      "images": "none",
+      "notes": "Tableau's MCP server \u2014 very active. GitHub releases Atom; 'images' are avatars, ignore."
+    },
+    {
+      "slug": "google-cloud-blog",
+      "url": "https://cloudblog.withgoogle.com/rss/",
+      "name": "Google Cloud blog",
+      "category": "Cloud & data platforms",
+      "images": "most",
+      "notes": ""
+    },
+    {
+      "slug": "snowflake-blog",
+      "url": "https://www.snowflake.com/feed/",
+      "name": "Snowflake blog",
+      "category": "Cloud & data platforms",
+      "images": "none",
+      "notes": ""
+    },
+    {
+      "slug": "databricks-blog",
+      "url": "https://www.databricks.com/feed",
+      "name": "Databricks blog",
+      "category": "Cloud & data platforms",
+      "images": "none",
+      "notes": ""
+    },
+    {
+      "slug": "f1",
+      "url": "https://www.formula1.com/en/latest/all.xml",
+      "name": "Formula 1 \u2013 latest",
+      "category": "Sport",
+      "images": "none",
+      "notes": "No dates in feed."
     }
   ]
 }
