@@ -317,7 +317,11 @@ def main(argv=None):
             w.writerows(all_items)
         print(f"[ ok ] all.csv: {len(all_items)} rows, {len(cols)} columns")
     print("\nTableau REST API Connector:  URL = <your host>/all.json   Response Format = JSON   JSON Path = $.items[*]")
-    return 1 if failures else 0
+    if failures:
+        print(f"[warn] {failures} of {len(feeds)} feeds failed (see [FAIL] lines above)", file=sys.stderr)
+    # Fail the run only when nothing could be fetched, so one dead feed does
+    # not stop the GitHub job from publishing the others.
+    return 1 if failures and not all_meta else 0
 
 
 if __name__ == "__main__":
