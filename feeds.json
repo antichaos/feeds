@@ -7,10 +7,64 @@
       "category": "Dutch news"
     },
     {
+      "slug": "dutchnews",
+      "url": "https://www.dutchnews.nl/feed/",
+      "name": "DutchNews.nl (English)",
+      "category": "Dutch news"
+    },
+    {
       "slug": "bbc-world",
       "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "name": "BBC News – World",
       "category": "International news"
+    },
+    {
+      "slug": "npr-news",
+      "url": "https://feeds.npr.org/1001/rss.xml",
+      "name": "NPR News",
+      "category": "International news"
+    },
+    {
+      "slug": "france24-en",
+      "url": "https://www.france24.com/en/rss",
+      "name": "France 24 (English)",
+      "category": "International news"
+    },
+    {
+      "slug": "eu-commission",
+      "url": "https://ec.europa.eu/commission/presscorner/api/rss?language=en",
+      "name": "European Commission press corner",
+      "category": "International news"
+    },
+    {
+      "slug": "ecb-press",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "name": "ECB press releases",
+      "category": "International news"
+    },
+    {
+      "slug": "our-world-in-data",
+      "url": "https://ourworldindata.org/atom.xml",
+      "name": "Our World in Data",
+      "category": "Data, statistics & open data"
+    },
+    {
+      "slug": "visualcapitalist",
+      "url": "https://www.visualcapitalist.com/feed/",
+      "name": "Visual Capitalist",
+      "category": "Data, statistics & open data"
+    },
+    {
+      "slug": "flowingdata",
+      "url": "https://flowingdata.com/feed",
+      "name": "FlowingData (Nathan Yau)",
+      "category": "Data, statistics & open data"
+    },
+    {
+      "slug": "kdnuggets",
+      "url": "https://www.kdnuggets.com/feed",
+      "name": "KDnuggets",
+      "category": "Data, statistics & open data"
     },
     {
       "slug": "tableau-blog",
@@ -19,106 +73,34 @@
       "category": "Tableau — official & product"
     },
     {
-      "slug": "aws-whats-new",
-      "url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
-      "name": "AWS What's New",
-      "category": "Cloud & data platforms"
-    },
-    {
-      "slug": "gdacs",
-      "url": "https://www.gdacs.org/xml/rss.xml",
-      "name": "GDACS – global disaster alerts",
-      "category": "Science, space & earth (mappable)"
-    },
-    {
-      "slug": "antichaos",
-      "url": "https://antichaosdata.com/feed",
-      "name": "Antichaos Blog",
-      "category": "Science, space & earth (mappable)"
-    },
-    {
-      "slug": "nyt-home",
-      "url": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
-      "name": "New York Times \u2013 Home",
-      "category": "International news"
-    },
-    {
-      "slug": "aljazeera",
-      "url": "https://www.aljazeera.com/xml/rss/all.xml",
-      "name": "Al Jazeera",
-      "category": "International news"
-    },
-    {
-      "slug": "our-world-in-data",
-      "url": "https://ourworldindata.org/atom.xml",
-      "name": "Our World in Data",
-      "category": "Data, statistics & open data",
-      "images": "all",
-      "notes": "CC BY. Atom."
-    },
-    {
-      "slug": "nightingale-dvs",
-      "url": "https://nightingaledvs.com/feed/",
-      "name": "Nightingale (Data Visualization Society)",
-      "category": "Data, statistics & open data",
-      "images": "most",
-      "notes": ""
-    },
-    {
       "slug": "tableau-conference-yt",
       "url": "https://www.youtube.com/feeds/videos.xml?user=tableausoftware",
       "name": "Tableau on YouTube",
-      "category": "Tableau \u2014 official & product",
-      "images": "all",
-      "notes": "YouTube Atom feed; thumbnails via media:group. Any channel works with ?channel_id=\u2026 (find the id in the channel page source)."
+      "category": "Tableau — official & product"
     },
     {
       "slug": "tableau-mcp-releases",
       "url": "https://github.com/tableau/tableau-mcp/releases.atom",
       "name": "tableau-mcp releases",
-      "category": "Tableau \u2014 official & product",
-      "images": "none",
-      "notes": "Tableau's MCP server \u2014 very active. GitHub releases Atom; 'images' are avatars, ignore."
+      "category": "Tableau — official & product"
     },
     {
-      "slug": "google-cloud-blog",
-      "url": "https://cloudblog.withgoogle.com/rss/",
-      "name": "Google Cloud blog",
-      "category": "Cloud & data platforms",
-      "images": "most",
-      "notes": ""
+      "slug": "antichaos",
+      "url": "https://antichaosdata.com/feed/",
+      "name": "Antichaos",
+      "category": "Tableau — community"
     },
     {
-      "slug": "snowflake-blog",
-      "url": "https://www.snowflake.com/feed/",
-      "name": "Snowflake blog",
-      "category": "Cloud & data platforms",
-      "images": "none",
-      "notes": ""
+      "slug": "esa-earth",
+      "url": "https://www.esa.int/rssfeed/Our_Activities/Observing_the_Earth",
+      "name": "ESA – Observing the Earth",
+      "category": "Science, space & earth (mappable)"
     },
     {
-      "slug": "databricks-blog",
-      "url": "https://www.databricks.com/feed",
-      "name": "Databricks blog",
-      "category": "Cloud & data platforms",
-      "images": "none",
-      "notes": ""
-    },
-    {
-      "slug": "f1",
-      "url": "https://www.formula1.com/en/latest/all.xml",
-      "name": "Formula 1 \u2013 latest",
-      "category": "Sport",
-      "images": "none",
-      "notes": "No dates in feed."
-    },
-{
-      "slug": "google-news-topic-automotive",
-      "url": "    https://news.google.com/rss/search?q=%22Automotive%22",
-      "name": "Google Newws - Automotive",
-      "category": "Industry"
+      "slug": "bbc-sport",
+      "url": "https://feeds.bbci.co.uk/sport/rss.xml",
+      "name": "BBC Sport",
+      "category": "Sport"
     }
-
-    
   ]
 }
