@@ -111,6 +111,14 @@
       "category": "Sport",
       "images": "none",
       "notes": "No dates in feed."
-    }
+    },
+{
+      "slug": "f1",
+      "url": "    https://news.google.com/rss/search?q=%22Automotive%22",
+      "name": "Google Newws - Automotive",
+      "category": "Industry"
+    },
+
+    
   ]
 }
