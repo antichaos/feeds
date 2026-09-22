@@ -301,6 +301,20 @@ def main(argv=None):
             continue
         # feed_name: the "name" from feeds.json (falls back to the feed's own title), next to feed_slug
         meta["name"] = feed.get("name") or meta.get("title") or slug
+        if not items:
+            # Some sources (Google News topic feeds, for one) intermittently return a
+            # valid but empty feed. Don't overwrite a good file with an empty one:
+            # keep the items from the previous <slug>.json when there is one.
+            prev = out / f"{slug}.json"
+            try:
+                items = json.loads(prev.read_text(encoding="utf-8"))["items"]
+            except (OSError, ValueError, KeyError):
+                items = []
+            failures += 1
+            print(f"[FAIL] {slug}: feed returned 0 items"
+                  + (f"; keeping {len(items)} items from previous {prev}" if items else ""), file=sys.stderr)
+            if not items:
+                continue
         items = [{"feed_slug": slug, "feed_name": meta["name"], **{k: v for k, v in i.items() if k != "feed_slug"}}
                  for i in items]
         items.sort(key=lambda i: i["published"] or "", reverse=True)

@@ -32,6 +32,19 @@ jobs:
         with:
           python-version: "3.12"
 
+      - id: pages
+        uses: actions/configure-pages@v6
+
+      # Seed out/ with the currently published files, so that a feed which
+      # returns 0 items this hour keeps last hour's items instead of going empty.
+      - name: Download previously published JSON
+        run: |
+          mkdir -p out
+          for slug in $(python3 -c 'import json; print(*[f["slug"] for f in json.load(open("feeds.json"))["feeds"]])'); do
+            curl -sfL "${{ steps.pages.outputs.base_url }}/$slug.json" -o "out/$slug.json" || rm -f "out/$slug.json"
+          done
+          ls out | wc -l
+
       - name: Fetch feeds
         run: python3 rss2json.py -f feeds.json
 
@@ -49,7 +62,6 @@ jobs:
             echo "</ul><p>Generated $(date -u '+%Y-%m-%d %H:%M UTC')</p>"
           } > index.html
 
-      - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
           path: out
