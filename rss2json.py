@@ -32,6 +32,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 USER_AGENT = "rss2json/1.0 (+tableau test)"
+# ISO-8601 with 'T', no offset: the only string shape Tableau's JDBC REST API driver types as TIMESTAMP.
+TS_FMT = "%Y-%m-%dT%H:%M:%S"
 NS = {
     "atom": "http://www.w3.org/2005/Atom",
     "content": "http://purl.org/rss/1.0/modules/content/",
@@ -55,7 +57,7 @@ def strip_html(s):
 
 
 def to_utc(s):
-    """RFC-822 (RSS) or ISO-8601 (Atom) date -> 'YYYY-MM-DD HH:MM:SS' in UTC."""
+    """RFC-822 (RSS) or ISO-8601 (Atom) date -> 'YYYY-MM-DDTHH:MM:SS' in UTC (see TS_FMT)."""
     if not s:
         return None
     s = s.strip()
@@ -69,7 +71,7 @@ def to_utc(s):
             return None
     if d.tzinfo is None:
         d = d.replace(tzinfo=dt.timezone.utc)
-    return d.astimezone(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    return d.astimezone(dt.timezone.utc).strftime(TS_FMT)
 
 
 def text(el, *paths):
@@ -285,7 +287,7 @@ def main(argv=None):
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    now = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
+    now = dt.datetime.now(dt.timezone.utc).strftime(TS_FMT)
     dump = dict(ensure_ascii=False, indent=2 if args.pretty else None)
 
     all_items, all_meta, failures = [], [], 0
