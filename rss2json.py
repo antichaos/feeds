@@ -270,17 +270,17 @@ def main(argv=None):
         if args.only:
             keep = {x.strip() for x in args.only.split(",")}
             entries = [f for f in entries if f["slug"] in keep]
-        feeds += [(f["slug"], f["url"]) for f in entries]
+        feeds += entries
     for spec in args.feeds:
         slug, sep, url = spec.partition("=")
-        feeds.append((slug, url) if sep else (slug_for(spec), spec))
+        feeds.append({"slug": slug, "url": url} if sep else {"slug": slug_for(spec), "url": spec})
     if not feeds and not args.feeds_file:
         # No arguments: use a feeds.json next to this script (or in the current
         # directory) so novices can just run `python3 rss2json.py`.
         for cand in (Path(__file__).resolve().parent / "feeds.json", Path("feeds.json")):
             if cand.is_file():
                 print(f"[info] no arguments given, using {cand}")
-                feeds += [(f["slug"], f["url"]) for f in json.loads(cand.read_text())["feeds"]]
+                feeds += json.loads(cand.read_text())["feeds"]
                 break
     if not feeds:
         ap.error("give at least one feed URL or --feeds-file (or put a feeds.json next to this script)")
@@ -291,13 +291,18 @@ def main(argv=None):
     dump = dict(ensure_ascii=False, indent=2 if args.pretty else None)
 
     all_items, all_meta, failures = [], [], 0
-    for slug, url in feeds:
+    for feed in feeds:
+        slug, url = feed["slug"], feed["url"]
         try:
             meta, items = parse_feed(fetch(url), slug, url, now)
         except Exception as e:  # keep going; report at the end
             print(f"[FAIL] {slug}: {e}", file=sys.stderr)
             failures += 1
             continue
+        # feed_name: the "name" from feeds.json (falls back to the feed's own title), next to feed_slug
+        meta["name"] = feed.get("name") or meta.get("title") or slug
+        items = [{"feed_slug": slug, "feed_name": meta["name"], **{k: v for k, v in i.items() if k != "feed_slug"}}
+                 for i in items]
         items.sort(key=lambda i: i["published"] or "", reverse=True)
         (out / f"{slug}.json").write_text(json.dumps({
             "feed": meta, "generated_at": now, "item_count": len(items), "items": items,
