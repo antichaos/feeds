@@ -101,6 +101,19 @@
       "url": "https://feeds.bbci.co.uk/sport/rss.xml",
       "name": "BBC Sport",
       "category": "Sport"
-    }
+    },
+     {
+      "slug": "usgs-quakes-m45-week",
+      "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.atom",
+      "name": "USGS earthquakes – M4.5+, past week",
+      "category": "Science, space & earth (mappable)"
+    },
+    {
+      "slug": "gdacs",
+      "url": "https://www.gdacs.org/xml/rss.xml",
+      "name": "GDACS – global disaster alerts",
+      "category": "Science, space & earth (mappable)"
+    },
+    
   ]
 }
