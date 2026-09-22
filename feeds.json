@@ -113,6 +113,12 @@
       "url": "https://www.gdacs.org/xml/rss.xml",
       "name": "GDACS – global disaster alerts",
       "category": "Science, space & earth (mappable)"
+    },
+    {
+      "slug": "data-and-information-visualization",
+      "url": "https://news.google.com/rss/search?q=%22data+visualization%22&hl=en-US&gl=US&ceid=US:en",
+      "name": "Data and information visualization | Google News",
+      "category": "Data, statistics & open data"
     }
   ]
 }
